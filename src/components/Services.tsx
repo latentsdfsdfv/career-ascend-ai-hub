@@ -31,25 +31,25 @@ const Services = () => {
   const getColorClasses = (color: string) => {
     switch (color) {
       case 'blue':
-        return 'text-blue-600 bg-blue-100';
+        return 'text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-900/30';
       case 'green':
-        return 'text-green-600 bg-green-100';
+        return 'text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/30';
       case 'purple':
-        return 'text-purple-600 bg-purple-100';
+        return 'text-purple-600 bg-purple-100 dark:text-purple-400 dark:bg-purple-900/30';
       default:
-        return 'text-blue-600 bg-blue-100';
+        return 'text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-900/30';
     }
   };
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto dark:text-gray-300">
             Comprehensive career development tools powered by artificial intelligence 
             to help you succeed in your professional journey.
           </p>
@@ -60,28 +60,28 @@ const Services = () => {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card key={index} className="relative group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+              <Card key={index} className="relative group hover:shadow-xl transition-all duration-300 border-0 shadow-lg dark:bg-gray-800 dark:shadow-gray-700/20">
                 <CardHeader className="pb-4">
                   <div className={`w-12 h-12 rounded-lg ${getColorClasses(service.color)} flex items-center justify-center mb-4`}>
                     <IconComponent className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900">
+                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600">
+                  <CardDescription className="text-gray-600 dark:text-gray-300">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                        <CheckCircle className="h-4 w-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white">
+                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200">
                     Learn More
                   </Button>
                 </CardContent>
@@ -91,8 +91,8 @@ const Services = () => {
         </div>
 
         {/* Process Flow */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 lg:p-12">
-          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-900 mb-12">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 lg:p-12">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-900 mb-12 dark:text-white">
             How It Works
           </h3>
           
@@ -104,13 +104,13 @@ const Services = () => {
               { step: "4", title: "Practice Interview", desc: "Take AI mock interviews and improve" }
             ].map((item, index) => (
               <div key={index} className="text-center relative">
-                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
+                <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
                   {item.step}
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-sm text-gray-600">{item.desc}</p>
+                <h4 className="font-semibold text-gray-900 mb-2 dark:text-white">{item.title}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{item.desc}</p>
                 {index < 3 && (
-                  <div className="hidden md:block absolute top-6 left-1/2 w-full h-0.5 bg-blue-200 -z-10"></div>
+                  <div className="hidden md:block absolute top-6 left-1/2 w-full h-0.5 bg-blue-200 dark:bg-blue-800 -z-10"></div>
                 )}
               </div>
             ))}
