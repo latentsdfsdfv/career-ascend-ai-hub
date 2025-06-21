@@ -1,10 +1,18 @@
 
 import { useState } from 'react';
-import { Menu, X, User, LogIn, UserPlus } from 'lucide-react';
+import { Menu, X, LogIn, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Close mobile menu after navigation
+  };
 
   return (
     <nav className="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
@@ -22,28 +30,49 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+              <button 
+                onClick={() => scrollToSection('home')}
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              >
                 Home
-              </a>
-              <a href="#services" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              >
                 Services
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              >
                 About
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              >
                 Contact
-              </a>
+              </button>
             </div>
           </div>
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="text-gray-700 hover:text-blue-600">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-gray-700 hover:text-blue-600"
+              onClick={() => scrollToSection('auth')}
+            >
               <LogIn className="w-4 h-4 mr-2" />
               Login
             </Button>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+            <Button 
+              size="sm" 
+              className="bg-blue-600 hover:bg-blue-700"
+              onClick={() => scrollToSection('auth')}
+            >
               <UserPlus className="w-4 h-4 mr-2" />
               Sign Up
             </Button>
@@ -64,24 +93,45 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">
+              <button 
+                onClick={() => scrollToSection('home')}
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              >
                 Home
-              </a>
-              <a href="#services" className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">
+              </button>
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              >
                 Services
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              >
                 About
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+              >
                 Contact
-              </a>
+              </button>
               <div className="px-3 py-2 space-y-2">
-                <Button variant="ghost" size="sm" className="w-full justify-start text-gray-700">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="w-full justify-start text-gray-700"
+                  onClick={() => scrollToSection('auth')}
+                >
                   <LogIn className="w-4 h-4 mr-2" />
                   Login
                 </Button>
-                <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button 
+                  size="sm" 
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  onClick={() => scrollToSection('auth')}
+                >
                   <UserPlus className="w-4 h-4 mr-2" />
                   Sign Up
                 </Button>
